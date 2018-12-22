@@ -1,0 +1,31 @@
+import java.util.LinkedList;
+import java.util.HashMap;
+
+public class Main {
+  public static void main(String[] args) {
+    HashMap<String,Integer> operatorPrecedence = new HashMap<String,Integer>();
+    operatorPrecedence.put("~", 3);
+    operatorPrecedence.put("*", 2);
+    operatorPrecedence.put("/", 2);
+    operatorPrecedence.put("+", 1);
+    operatorPrecedence.put("-", 1);
+    
+    RPNCalculator rpn = new RPNCalculator();
+    // TODO ...
+    LinkedList commandStack = new LinkedList();
+    while (true) {
+      String next = In.readWord();
+      if (next.equals("=")) {
+        break;
+      }
+      Integer op = operatorPrecedence.get(next);
+      if (op != null) { // it was an operator
+        // TODO ...
+      } else { // enter a number, will run into exception if no number
+        // TODO ...
+      }
+    }
+    // TODO ...
+    Out.print("> "); Out.print(rpn.pop(), 1); Out.println(" <");
+  }
+}
