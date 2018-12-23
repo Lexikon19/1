@@ -12,7 +12,7 @@ public class Main {
     
     RPNCalculator rpn = new RPNCalculator();
     // TODO ...
-    LinkedList commandStack = new LinkedList();
+    LinkedList<String> commandStack = new LinkedList<>();
     while (true) {
       String next = In.readWord();
       if (next.equals("=")) {
@@ -21,8 +21,12 @@ public class Main {
       Integer op = operatorPrecedence.get(next);
       if (op != null) { // it was an operator
         // TODO ...
+        if(!commandStack.isEmpty()){
+          
+        }
       } else { // enter a number, will run into exception if no number
         // TODO ...
+        commandStack.push(next);
       }
     }
     // TODO ...
