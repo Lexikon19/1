@@ -21,15 +21,18 @@ public class Main {
       Integer op = operatorPrecedence.get(next);
       if (op != null) { // it was an operator
         // TODO ...
-        if(commandStack.isEmpty()){
+        if(!commandStack.isEmpty()){
+          int prec2 = operatorPrecedence.get(commandStack.peek());
+          int prec1 = op;
+          if((prec2 > prec1) || (prec2 == prec1)){
+            rpn.apply(commandStack.pop());
+            commandStack.push(next);
+          }else{
+            commandStack.push(next);
+            //rpn.apply(next);
+          }
+        }else if(commandStack.isEmpty()){
           commandStack.push(next);
-        }else if(!commandStack.isEmpty()){
-          
-        }else if(operatorPrecedence.get(commandStack.peek()) > op){
-          rpn.apply(commandStack.pop());
-          commandStack.push(next);
-        }else{
-          rpn.apply(next); 
         }
       } else { // enter a number, will run into exception if no number
         // TODO ...
@@ -38,6 +41,9 @@ public class Main {
       }
     }
     // TODO ...
+    while(!commandStack.isEmpty()){
+      rpn.apply(commandStack.pop());
+    }
     Out.print("> "); Out.print(rpn.pop(), 1); Out.println(" <");
   }
 }
