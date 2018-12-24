@@ -29,7 +29,6 @@ public class Main {
             commandStack.push(next);
           }else{
             commandStack.push(next);
-            //rpn.apply(next);
           }
         }else if(commandStack.isEmpty()){
           commandStack.push(next);
